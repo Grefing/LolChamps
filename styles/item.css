@@ -1,0 +1,11 @@
+.imgItem{
+    width: 64px;
+    height: 64px;
+    margin: 10px 10px;
+    transition: 200ms ease;
+}
+
+.imgItem:hover{
+    transform: scale(1.05, 1.05);
+    cursor: pointer;
+}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { obtenerItems } from "../helpers/queries";
 import { Container } from "react-bootstrap";
-import Item from "./item/Item";
+import Item from "./agregados/Item";
 
 const Items = () => {
     const [data, setData] = useState({});

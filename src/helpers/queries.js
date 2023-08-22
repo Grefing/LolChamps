@@ -29,3 +29,12 @@ export const obtenerItems = async () =>{
     console.log(e);
   }
 }
+
+export const obtenerSummoners = async () =>{
+  try {
+    const {data} = await axios.get(`http://ddragon.leagueoflegends.com/cdn/13.16.1/data/es_AR/summoner.json`)
+    return data.data;
+  } catch (e) {
+    console.log(e);
+  }
+}

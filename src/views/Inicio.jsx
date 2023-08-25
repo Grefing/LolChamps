@@ -17,9 +17,9 @@ const Inicio = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = (datos) => {
+  const handleInputChange = (dato) => {
     obtenerCampeones().then((res) => {
-      const filtro = datos.campeon.toLowerCase();
+      const filtro = dato.toLowerCase(); // Cambio aquí para usar el dato actual
       const campeonesFiltrados = Object.keys(res).filter((campeon) =>
         campeon.toLowerCase().includes(filtro)
       );
@@ -48,19 +48,22 @@ const Inicio = () => {
 
   return (
     <Container>
+      <div className="d-flex justify-content-center my-4 text-center">
+        <h1>CHAMPIONS OF LEAGUE OF LEGENDS</h1>
+      </div>
       <div className="d-flex justify-content-center my-3">
-        <form
-          action=""
-          className="align-self-center"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <input type="text" className="inputInicio" {...register("campeon")} />
-        </form>
+        <input
+          type="text"
+          className="inputInicio"
+          {...register("campeon")}
+          placeholder="Buscar Campeon..."
+          onChange={(e) => handleInputChange(e.target.value)}
+        />
       </div>
       <Row className="d-flex justify-content-center my-5">
         {isLoading ? (
           <Loader></Loader>
-        ) : (Object.keys(data).length > 0 ? (
+        ) : Object.keys(data).length > 0 ? (
           Object.keys(data).map((nombreCampeon) => (
             <CardCampeon
               key={nombreCampeon}
@@ -69,7 +72,7 @@ const Inicio = () => {
           ))
         ) : (
           <h3 className="my-5 text-center">No se encontraron campeones!</h3>
-        ))}
+        )}
       </Row>
     </Container>
   );

@@ -5,7 +5,7 @@ import "/styles/banner.css"
 const Banner = ({ skins, champion }) => {
 
   return (
-    <Carousel interval={null}>
+    <Carousel interval={null} className="carouselContainer">
       {skins && skins.map((skin) => (
         <Carousel.Item key={skin.id}>
             <Card.Img

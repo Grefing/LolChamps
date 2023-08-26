@@ -1,8 +1,19 @@
 import { Col } from "react-bootstrap";
 import "/styles/cardCampeon.css"
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const CardCampeon = ({ nombreCampeon }) => {
+  const [isActive, setIsActive] = useState(false);
+
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setIsActive(true);
+    }, 100);
+    return () => clearTimeout(timeoutId);
+    
+  }, []);
 
   return (
     <>
@@ -12,7 +23,9 @@ const CardCampeon = ({ nombreCampeon }) => {
         md={4}
         lg={4}
         xl={4}
-        className="mb-3 d-flex justify-content-center"
+        className={`mb-3 d-flex justify-content-center card-transition ${
+          isActive ? "active" : ""
+        }`}
       >
         <Link className="cardChampion" to={`/${nombreCampeon}`}>
           <img

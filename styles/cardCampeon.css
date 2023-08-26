@@ -32,3 +32,15 @@
     transition: 0.3s;
     margin: 0;
   }
+
+
+.card-transition {
+    opacity: 0;
+    transform: translateX(-100%); 
+    transition: 2s ease; 
+  }
+  
+  .card-transition.active {
+    opacity: 1; 
+    transform: translateX(0); 
+  }
